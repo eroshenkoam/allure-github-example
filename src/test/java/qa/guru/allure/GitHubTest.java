@@ -1,6 +1,7 @@
 package qa.guru.allure;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -15,6 +16,7 @@ public class GitHubTest {
 
     @Test
     public void searchForIssue() {
+        Configuration.remote = "http://localhost:4444/wd/hub";
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://github.com");
