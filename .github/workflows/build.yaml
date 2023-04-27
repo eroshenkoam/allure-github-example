@@ -17,6 +17,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+      - uses: browser-actions/setup-chrome@v1
       - run: ./gradlew clean test
       - name: Copy History
         uses: actions/checkout@v2
