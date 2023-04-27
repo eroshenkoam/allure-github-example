@@ -23,4 +23,6 @@ jobs:
           allure-token: ${{ secret.ALLURE_TOKEN }}
           allure-project-id: 2214
       - uses: Xotabu4/selenoid-github-action@v2
-      - run: ./gradlew clean test
+      - run: allurectl watch -- ./gradlew clean test
+        env:
+          ALLURE_RESULTS: build/allure-results
