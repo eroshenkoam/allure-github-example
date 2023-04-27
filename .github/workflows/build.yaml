@@ -17,25 +17,12 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: '17'
+      - uses: allure-framework/setup-allurectl@v1
+        with:
+          allure-endpoint: https://allure.autotests.cloud
+          allure-token: ${{ secrets.ALLURE_TOKEN }}
+          allure-project-id: 2214
       - uses: Xotabu4/selenoid-github-action@v2
-      - run: ./gradlew clean test
-      - name: Copy History
-        uses: actions/checkout@v2
-        if: always()
-        with:
-          ref: gh-pages
-          path: gh-pages
-      - name: Build Report
-        uses: simple-elf/allure-report-action@master
-        if: always()
-        with:
-          allure_results: build/allure-results
-          allure_history: allure-history
-          keep_reports: 20
-      - name: Publish Report
-        if: always()
-        uses: peaceiris/actions-gh-pages@v2
+      - run: allurectl watch -- ./gradlew clean test
         env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+          ALLURE_RESULTS: build/allure-results
