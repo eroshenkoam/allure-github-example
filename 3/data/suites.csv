@@ -1,0 +1,2 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Thu Apr 27 17:52:00 GMT 2023","Thu Apr 27 17:52:09 GMT 2023","9163","","qa.guru.allure.GitHubTest","","qa.guru.allure.GitHubTest","searchForIssue","searchForIssue()",""
